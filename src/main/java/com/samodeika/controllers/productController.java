@@ -22,13 +22,13 @@ public class productController {
     @RequestMapping(value = "/products", method = RequestMethod.GET)
     public String list(Model model){
         model.addAttribute("products", productService.listAllProducts());
-        return "products";
+        return "product/products";
     }
 
     @RequestMapping("product/{id}")
     public String showProduct(@PathVariable Integer id, Model model){
         model.addAttribute("product", productService.getProductById(id));
-        return "productshow";
+        return "product/productshow";
     }
 
     @RequestMapping(value = "product", method = RequestMethod.POST)
@@ -40,13 +40,13 @@ public class productController {
     @RequestMapping("product/new")
     public String newProduct(Model model){
         model.addAttribute("product", new Product());
-        return "productform";
+        return "product/productform";
     }
 
     @RequestMapping("product/edit/{id}")
     public String edit(@PathVariable Integer id, Model model){
         model.addAttribute("product", productService.getProductById(id));
-        return "productform";
+        return "product/productform";
     }
 
     @RequestMapping("product/delete/{id}")
