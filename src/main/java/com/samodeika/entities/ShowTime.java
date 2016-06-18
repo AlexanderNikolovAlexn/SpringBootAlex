@@ -6,27 +6,23 @@ import java.util.Calendar;
 
 public class ShowTime {
 
-    private String timeString;
     private static ShowTime instance;
+    private DateFormat dateFormat;
+    private Calendar calendar;
 
-    private ShowTime(){
-        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        Calendar cal = Calendar.getInstance();
-        timeString = dateFormat.format(cal.getTime());
+    private ShowTime() {
+        dateFormat = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss");
     }
 
-    public static ShowTime getIntance() {
-        if(instance == null) {
+    public static ShowTime getInstance() {
+        if(instance == null)  {
             instance = new ShowTime();
         }
         return instance;
     }
 
-    public String getTimeString() {
-        if(instance == null) {
-            return null;
-        }
-        return instance.timeString;
+    public String getTime() {
+        calendar = Calendar.getInstance();
+        return dateFormat.format(calendar.getTime());
     }
-
 }
